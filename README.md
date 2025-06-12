@@ -5,15 +5,18 @@ A dynamic web application that generates personalized quizzes on any topic using
 ## 📸 Screenshots
 
 ### Quiz Generation Interface
-![Quiz Generator Interface](screenshot1.png)
+![WhatsApp Image 2025-06-12 at 14 27 51_5d9ee917](https://github.com/user-attachments/assets/aae4107a-79b0-4725-867e-380c80ec5bd3)
+
 *Clean and intuitive interface for entering quiz topics*
 
 ### Interactive Quiz Taking
-![Quiz Interface](screenshot2.png)
+![WhatsApp Image 2025-06-12 at 14 27 05_9a4381a3](https://github.com/user-attachments/assets/12ff255a-9b74-417c-9e6a-b7a85de0f578)
+
 *Dynamic quiz interface with multiple choice questions*
 
 ### Detailed Results & Analytics
-![Results Page](screenshot3.png)
+![WhatsApp Image 2025-06-12 at 14 27 05_98f46e93](https://github.com/user-attachments/assets/2dbb4eb9-2585-4e14-aa57-de2ba2a9443a)
+
 *Comprehensive score breakdown with correct/incorrect answer analysis*
 
 ## ✨ Features
