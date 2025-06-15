@@ -1,28 +1,97 @@
+<!-- templates/result.html (Updated) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Quiz Results</title>
+  <title>Quiz Results - AI Quiz App</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-2xl mx-auto mt-16 bg-white p-8 shadow-lg rounded-xl">
-    <h2 class="text-2xl font-bold mb-6 text-center">Your Score: {{ score }} / {{ total }}</h2>
-    <ul class="space-y-4">
-      {% for r in results %}
-        <li class="p-4 border rounded-md {% if r.is_correct %}bg-green-50{% else %}bg-red-50{% endif %}">
-          <p class="font-semibold">{{ r.question }}</p>
-          <p>Your Answer: <span class="font-medium">{{ r.selected }}</span></p>
-          <p>Correct Answer: <span class="font-medium">{{ r.correct }}</span></p>
-          {% if r.is_correct %}
-            <p class="text-green-600 font-semibold">✅ Correct</p>
-          {% else %}
-            <p class="text-red-600 font-semibold">❌ Incorrect</p>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-    <div class="text-center mt-6">
-      <a href="/" class="text-blue-600 underline">Try another topic</a>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm border-b">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-gray-800">🧠 AI Quiz</h1>
+      <div class="flex items-center space-x-4">
+        <a href="{{ url_for('logout') }}" 
+           class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-4xl mx-auto mt-8 px-4">
+    <!-- Score Card -->
+    <div class="bg-white p-8 shadow-xl rounded-2xl text-center mb-8">
+      <div class="mb-6">
+        {% set percentage = (score / total * 100) | round %}
+        {% if percentage >= 80 %}
+          <div class="text-6xl mb-4">🎉</div>
+          <h2 class="text-3xl font-bold text-green-600 mb-2">Excellent Work!</h2>
+        {% elif percentage >= 60 %}
+          <div class="text-6xl mb-4">👍</div>
+          <h2 class="text-3xl font-bold text-yellow-600 mb-2">Good Job!</h2>
+        {% else %}
+          <div class="text-6xl mb-4">📚</div>
+          <h2 class="text-3xl font-bold text-red-600 mb-2">Keep Learning!</h2>
+        {% endif %}
+        
+        <div class="text-5xl font-bold text-gray-800 mb-2">
+          {{ score }} / {{ total }}
+        </div>
+        <div class="text-xl text-gray-600">
+          {{ percentage }}% Correct
+        </div>
+      </div>
+      
+      <div class="flex justify-center space-x-4">
+        <a href="{{ url_for('quiz') }}" 
+           class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold">
+          🚀 Try Another Quiz
+        </a>
+        <a href="{{ url_for('dashboard') }}" 
+           class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition duration-200 font-semibold">
+          📊 View Dashboard
+        </a>
+      </div>
+    </div>
+
+    <!-- Detailed Results -->
+    <div class="bg-white shadow-xl rounded-2xl p-8">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">Detailed Results</h3>
+      
+      <div class="space-y-6">
+        {% for r in results %}
+          {% set i = loop.index %}
+          <div class="border-2 {% if r.is_correct %}border-green-200 bg-green-50{% else %}border-red-200 bg-red-50{% endif %} rounded-xl p-6">
+            <div class="flex items-start justify-between mb-4">
+              <h4 class="font-semibold text-lg text-gray-800 flex-1">
+                <span class="{% if r.is_correct %}bg-green-100 text-green-800{% else %}bg-red-100 text-red-800{% endif %} px-3 py-1 rounded-full text-sm font-bold mr-3">{{ i }}</span>
+                {{ r.question }}
+              </h4>
+              <div class="ml-4">
+                {% if r.is_correct %}
+                  <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">✅ Correct</span>
+                {% else %}
+                  <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">❌ Incorrect</span>
+                {% endif %}
+              </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <p class="text-sm font-medium text-gray-600 mb-1">Your Answer:</p>
+                <p class="{% if r.is_correct %}text-green-700{% else %}text-red-700{% endif %} font-semibold">
+                  {{ r.selected or "No answer selected" }}
+                </p>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-gray-600 mb-1">Correct Answer:</p>
+                <p class="text-green-700 font-semibold">{{ r.correct }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </body>
