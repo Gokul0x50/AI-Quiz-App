@@ -13,7 +13,8 @@ A modern web application that generates personalized quizzes using AI technology
 
 ## 🚀 Demo
 
-![Quiz Dashboard](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=AI+Quiz+Dashboard)
+![image](https://github.com/user-attachments/assets/1cfcca0a-f36d-4d98-9be4-968f952f096b)
+
 
 ## 🛠️ Tech Stack
 
