@@ -1,122 +1,185 @@
-# 🧠 AI Quiz Generator
+# 🧠 AI Quiz App
 
-A dynamic web application that generates personalized quizzes on any topic using AI. Built with Flask and powered by LLaMA model, this application creates engaging multiple-choice questions instantly.
-
-## 📸 Screenshots
-
-### Quiz Generation Interface
-![WhatsApp Image 2025-06-12 at 14 27 51_5d9ee917](https://github.com/user-attachments/assets/aae4107a-79b0-4725-867e-380c80ec5bd3)
-
-*Clean and intuitive interface for entering quiz topics*
-
-### Interactive Quiz Taking
-![WhatsApp Image 2025-06-12 at 14 27 05_9a4381a3](https://github.com/user-attachments/assets/12ff255a-9b74-417c-9e6a-b7a85de0f578)
-
-*Dynamic quiz interface with multiple choice questions*
-
-### Detailed Results & Analytics
-![WhatsApp Image 2025-06-12 at 14 27 05_98f46e93](https://github.com/user-attachments/assets/2dbb4eb9-2585-4e14-aa57-de2ba2a9443a)
-
-*Comprehensive score breakdown with correct/incorrect answer analysis*
+A modern web application that generates personalized quizzes using AI technology. Built with Flask and powered by LLaMA AI models, this app creates engaging multiple-choice questions on any topic and tracks your learning progress.
 
 ## ✨ Features
 
-- **🤖 AI-Powered Question Generation**: Leverages LLaMA model for intelligent question creation
-- **📱 Responsive Design**: Beautiful, mobile-friendly interface using Tailwind CSS
-- **⚡ Real-time Quiz Generation**: Instant quiz creation on any topic
-- **📊 Detailed Results**: Comprehensive scoring with answer breakdowns
-- **🎯 Multiple Choice Format**: Standard A, B, C, D question format
-- **🔄 Unlimited Topics**: Generate quizzes on virtually any subject
+- **AI-Powered Quiz Generation**: Generate custom quizzes on any topic using advanced language models
+- **User Authentication**: Secure registration and login system with password hashing
+- **Progress Tracking**: Complete quiz history with scores and performance analytics
+- **Modern UI**: Clean, responsive design built with Tailwind CSS
+- **Real-time Results**: Instant feedback with detailed answer explanations
+- **Topic Flexibility**: Create quizzes on any subject from programming to history
+
+## 🚀 Demo
+
+![image](https://github.com/user-attachments/assets/1cfcca0a-f36d-4d98-9be4-968f952f096b)
+
 
 ## 🛠️ Tech Stack
 
 - **Backend**: Flask (Python)
-- **Frontend**: HTML5, Tailwind CSS, Jinja2 Templates
-- **API**: LLaMA Model API
-- **Styling**: Tailwind CSS for modern, responsive design
+- **Database**: SQLite with SQL schema
+- **AI API**: LLaMA API (Large Language Model Meta AI)
+- **Frontend**: HTML5, Tailwind CSS, JavaScript
+- **Security**: Werkzeug password hashing
+- **Session Management**: Flask sessions
 
 ## 📋 Prerequisites
 
 - Python 3.7+
-- Flask
-- Requests library
-- LLaMA API access
+- LLaMA API key (get one from your LLaMA service provider)
+- pip (Python package installer)
 
-## 🚀 Installation & Setup
+## ⚡ Quick Start
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/ai-quiz-generator.git
-   cd ai-quiz-generator
-   ```
+### 1. Clone the Repository
 
-2. **Install dependencies**
-   ```bash
-   pip install flask requests
-   ```
+```bash
+git clone https://github.com/yourusername/ai-quiz-app.git
+cd ai-quiz-app
+```
 
-3. **Configure API Key**
-   - Get your LLaMA API key
-   - Replace the API key in `app.py`:
-   ```python
-   API_KEY = "your_actual_api_key_here"
-   ```
+### 2. Install Dependencies
 
-4. **Run the application**
-   ```bash
-   python app.py
-   ```
+```bash
+pip install flask requests werkzeug
+```
 
-5. **Access the app**
-   - Open your browser and navigate to `http://localhost:5050`
+### 3. Set Up Environment
+
+1. Get your LLaMA API key from your service provider
+2. Open `app.py` and replace the API key:
+
+```python
+LLAMA_API_KEY = "your_actual_llama_api_key_here"
+```
+
+3. Change the secret key for production:
+
+```python
+app.secret_key = 'your-super-secret-production-key-here'
+```
+
+### 4. Run the Application
+
+```bash
+python app.py
+```
+
+The app will start on `http://localhost:5050`
 
 ## 📁 Project Structure
 
 ```
-ai-quiz-generator/
-│
+ai-quiz-app/
 ├── app.py                 # Main Flask application
+├── quiz_app.db           # SQLite database (auto-created)
 ├── static/
 │   └── css/
-│       └── style.css     # Custom CSS styles
-├── templates/
-│   ├── index.html        # Home page template
-│   ├── quiz.html         # Quiz interface template
-│   └── result.html       # Results page template
-└── README.md
+│       └── style.css     # Custom styles
+└── templates/
+    ├── index.html        # Landing page
+    ├── login.html        # User login
+    ├── register.html     # User registration
+    ├── dashboard.html    # User dashboard
+    ├── new_quiz.html     # Quiz topic input
+    ├── quiz.html         # Quiz taking interface
+    └── result.html       # Quiz results display
 ```
 
-## 🎮 How to Use
+## 🎯 How It Works
 
-1. **Enter a Topic**: Type any subject you want to be quizzed on
-2. **Generate Quiz**: Click "Generate Quiz" to create 5 AI-powered questions
-3. **Take the Quiz**: Answer all multiple-choice questions
-4. **View Results**: See your score and detailed answer breakdown
+1. **Register/Login**: Create an account or log in to start taking quizzes
+2. **Choose Topic**: Enter any topic you want to be quizzed on
+3. **AI Generation**: The app uses Groq's AI to generate 5 relevant multiple-choice questions
+4. **Take Quiz**: Answer the questions in an intuitive interface
+5. **View Results**: Get instant feedback and detailed explanations
+6. **Track Progress**: View your quiz history and performance trends
 
 ## 🔧 Configuration
 
-### API Settings
-```python
-# Modify these settings in app.py
-API_KEY = "your_api_key"
-MODEL = "llama-model"      # Change model if needed
-PORT = 5050                # Modify port as required
+### Database Schema
+
+The app automatically creates two tables:
+
+- **users**: Stores user accounts with hashed passwords
+- **quiz_history**: Tracks all quiz attempts with scores and timestamps
+
+### API Configuration
+
+Currently configured to use:
+- **Model**: LLaMA (Large Language Model Meta AI)
+- **Endpoint**: LLaMA API endpoint
+- **Questions per quiz**: 5 (customizable in the code)
+
+## 🎨 Customization
+
+### Adding New Features
+
+1. **Different Question Types**: Modify the `generate_questions()` function
+2. **More Questions**: Change the prompt in `generate_questions()`
+3. **Difficulty Levels**: Add difficulty selection in the topic input form
+4. **Categories**: Implement predefined topic categories
+
+### Styling
+
+The app uses Tailwind CSS for styling. You can:
+- Modify existing classes in the HTML templates
+- Add custom CSS in `static/css/style.css`
+- Change the color scheme by updating Tailwind classes
+
+## 🔒 Security Features
+
+- Password hashing using Werkzeug's security functions
+- SQL injection protection through parameterized queries
+- Session-based authentication
+- Input validation for user registration
+
+## 🚀 Deployment
+
+### Local Development
+
+```bash
+# Run in debug mode
+python app.py
 ```
 
-## 🚀 Future Enhancements
+### Production Deployment
 
-- **🔐 User Authentication**: User registration, login, and profile management
-- **📊 Progress Tracking**: Track quiz history and performance analytics over time
-- **🎯 Difficulty Levels**: Easy, Medium, Hard question generation options
-- **⏱️ Timed Quizzes**: Add countdown timers for competitive quiz experience
-- **📱 Mobile App**: Native mobile application for iOS and Android
-- **🌐 Quiz Sharing**: Share custom quizzes with friends via unique links
-- **🏆 Leaderboards**: Compare scores with other users globally
-- **🌙 Dark Mode**: Toggle between light and dark theme options
-- **🔒 Enhanced Security**: JWT authentication and input validation
-- **💾 Database Integration**: PostgreSQL/MongoDB for data persistence
-- **📈 Advanced Analytics**: Detailed performance insights and learning recommendations
-- **🎨 Custom Themes**: Multiple UI themes and customization options
+1. **Update Configuration**:
+   ```python
+   app.secret_key = 'your-production-secret-key'
+   app.debug = False
+   ```
+
+2. **Use Production WSGI Server**:
+   ```bash
+   pip install gunicorn
+   gunicorn -w 4 -b 0.0.0.0:8000 app:app
+   ```
+
+3. **Environment Variables** (recommended):
+   ```bash
+   export LLAMA_API_KEY="your_api_key"
+   export SECRET_KEY="your_secret_key"
+   ```
+
+## 📊 Database Management
+
+### View Quiz History
+
+```sql
+sqlite3 quiz_app.db
+SELECT * FROM quiz_history WHERE user_id = 1;
+```
+
+### Reset Database
+
+```bash
+rm quiz_app.db
+# Restart the app to recreate tables
+```
 
 ## 🤝 Contributing
 
@@ -126,16 +189,47 @@ PORT = 5050                # Modify port as required
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**API Key Error**:
+- Make sure your LLaMA API key is valid and has proper access
+- Check the API key format in `app.py`
+
+**Database Issues**:
+- Delete `quiz_app.db` and restart the app to recreate tables
+- Check file permissions in the project directory
+
+**Quiz Generation Fails**:
+- Verify your internet connection
+- Check LLaMA API service status
+- Try a different topic (some topics may have content restrictions)
+
+**Styling Issues**:
+- Ensure Tailwind CSS is loading from the CDN
+- Check browser console for any CSS errors
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## 🙏 Acknowledgments
 
-- **Issues**: Report bugs or request features via GitHub Issues
-- **Documentation**: Check the wiki for detailed documentation
-- **Contact**: Reach out for support or collaboration opportunities
+- [LLaMA](https://ai.meta.com/llama/) for providing the AI language model
+- [Tailwind CSS](https://tailwindcss.com) for the styling framework
+- [Flask](https://flask.palletsprojects.com) for the web framework
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+
+1. Check the troubleshooting section above
+2. Search existing [GitHub Issues](https://github.com/yourusername/ai-quiz-app/issues)
+3. Create a new issue with detailed information about the problem
 
 ---
 
-Made with ❤️ by Gokul P | ⭐ Star this repo if you found it helpful!
+**Happy Learning! 🎓**
+
+Made with ❤️ and AI
