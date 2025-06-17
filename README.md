@@ -232,4 +232,4 @@ If you encounter any issues or have questions:
 
 **Happy Learning! 🎓**
 
-Made with ❤️ and AI
+Made with ❤️ 
